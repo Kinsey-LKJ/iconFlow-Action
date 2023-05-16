@@ -1,0 +1,12 @@
+name: 'My Build and Publish Action'
+description: 'Generates, builds, and publishes a package'
+inputs:
+  npm-auth-token:
+    description: 'NPM auth token'
+    required: true
+  working-directory:
+    description: 'Working directory'
+    required: true
+runs:
+  using: 'node18'
+  main: 'main.js'

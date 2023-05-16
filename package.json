@@ -1,0 +1,63 @@
+{
+  "name": "my-nb-react-icon",
+  "version": "0.0.10",
+  "description": "Icon automation workflow with Figma",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/icons.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": "https://github.com/Kinsey-LKJ/oreicon-flow.git",
+  "keywords": [
+    "react",
+    "icons",
+    "svg",
+    "inline",
+    "figma",
+    "design"
+  ],
+  "scripts": {
+    "fetch": "node bin/fetchSVG.js",
+    "generate": "sudo rm -rf src/icons && node bin/build.js",
+    "build:bundle": "sudo rm -rf dist && node_modules/.bin/rollup --c ./build/rollup.config.bundle.js --bundleConfigAsCjs",
+    "dev": "rollup -w -c ./build/rollup.config.dev.js",
+    "build": "rollup -c ./build/rollup.config.prod.js"
+  },
+  "config": {
+    "style": "fill"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-react": "^7.18.6",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-terser": "^0.4.1",
+    "cheerio": "^1.0.0-rc.12",
+    "concurrently": "^8.0.1",
+    "dotenv": "^16.0.3",
+    "figma-js": "^1.16.0",
+    "fs-extra": "^11.1.1",
+    "got": "^12.6.0",
+    "p-queue": "7.3.4",
+    "prettier-eslint": "^15.0.1",
+    "rollup": "^3.21.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-serve": "^2.0.2",
+    "svgo": "^3.0.2",
+    "uppercamelcase": "^3.0.0"
+  }
+}
