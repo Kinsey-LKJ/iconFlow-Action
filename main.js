@@ -5,7 +5,7 @@ const fs = require('fs');
 const userRepoPath = process.env.GITHUB_WORKSPACE
 const actionRepoPath = path.resolve(process.env.GITHUB_WORKSPACE, 'action');
 
-const userPackagePath = path.join(__dirname, 'action', 'user-package.json');
+const userPackagePath = path.resolve(userRepoPath, 'package.json');
 const userPackageContent = fs.readFileSync(userPackagePath, 'utf-8');
 const userPackageObj = JSON.parse(userPackageContent);
 const userVersion = userPackageObj.version;
