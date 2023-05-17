@@ -22,8 +22,8 @@ runs:
         path: 'action'
 
     - name: Copy src files
-        run: sudo cp -R ./src action/
-        shell: bash
+      run: sudo cp -R ./src action/
+      shell: bash
 
     - name: List directory contents
       run:  ls -l action/src
