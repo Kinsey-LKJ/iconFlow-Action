@@ -1,12 +1,32 @@
-name: 'My Build and Publish Action'
-description: 'Generates, builds, and publishes a package'
+name: 'Your Action Name'
+description: 'Your Action Description'
 inputs:
   npm-auth-token:
     description: 'NPM auth token'
     required: true
-  working-directory:
-    description: 'Working directory'
-    required: true
 runs:
-  using: 'node18'
-  main: 'main.js'
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.x'
+
+    - name: Install dependencies
+      run: npm install
+      shell: bash
+
+    - name: Generate Icons and Build
+      run: |
+        npm run generate
+        npm run build:bundle
+      shell: bash
+
+    - name: Publish to NPM
+      run: |
+        echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-auth-token }}" > ~/.npmrc
+        npm publish
+      shell: bash
