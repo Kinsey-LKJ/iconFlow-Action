@@ -7,8 +7,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout repository
+    - name: Checkout action repository
       uses: actions/checkout@v2
+      with:
+        repository: 'Kinsey-LKJ/iconFlow-Action'
+        path: 'action'
 
     - name: Setup Node.js
       uses: actions/setup-node@v2
@@ -21,7 +24,7 @@ runs:
 
     - name: Generate Icons and Build
       run: |
-        node main.js
+        node action/main.js
       shell: bash
 
     - name: Publish to NPM
