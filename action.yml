@@ -33,6 +33,10 @@ runs:
       run: cp -R ./src action/
       shell: bash
 
+    - name: Copy and rename package.json
+      run: cp ./package.json ./action/user-package.json
+      shell: bash
+
     - name: Install action dependencies
       run: cd action && npm install
       shell: bash
