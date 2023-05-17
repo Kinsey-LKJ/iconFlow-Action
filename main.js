@@ -2,15 +2,20 @@ const { exec } = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
 
+
 // Define the paths
 const actionRepoPath = process.env.GITHUB_WORKSPACE;
 const userRepoPath = path.resolve(process.env.GITHUB_WORKSPACE, '..');
+
+console.log('Current working directory:', process.cwd());
 
 // Copy src directory from user repo to action repo
 fs.copySync(path.join(userRepoPath, 'src'), path.join(actionRepoPath, 'src'));
 
 // Change the working directory to the action repo
 process.chdir(actionRepoPath);
+
+console.log('Current working directory:', process.cwd());
 
 // Get the NPM auth token from the action inputs
 const npmAuthToken = process.env.INPUT_NPM_AUTH_TOKEN;
