@@ -21,8 +21,12 @@ runs:
         repository: 'Kinsey-LKJ/iconFlow-Action'
         path: 'action'
 
+    - name: List directory contents
+      run:  ls -l src
+      shell: bash
+
     - name: Copy src files
-      run: sudo cp -R ./src action/
+      run: cp -R ./src action/
       shell: bash
 
     - name: List directory contents
