@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs-extra'); // Use fs-extra module
 
-const userRepoPath = path.resolve(process.env.GITHUB_WORKSPACE, '..');
+const userRepoPath = process.env.GITHUB_WORKSPACE
 const actionRepoPath = path.resolve(process.env.GITHUB_WORKSPACE, 'action');
 
 // Copy entire 'src' directory from user's repository to action's repository
