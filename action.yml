@@ -25,6 +25,9 @@ runs:
       run: cp -R ./src action/
       shell: bash
 
+    - name: List directory contents
+      run:  ls -l action/src
+
     - name: Install action dependencies
       run: cd action && npm install
       shell: bash
