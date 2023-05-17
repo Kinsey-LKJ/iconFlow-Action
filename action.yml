@@ -27,6 +27,7 @@ runs:
 
     - name: List directory contents
       run:  ls -l action/src
+      shell: bash
 
     - name: Install action dependencies
       run: cd action && npm install
