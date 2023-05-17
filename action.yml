@@ -18,24 +18,21 @@ runs:
       uses: actions/setup-node@v2
       with:
         node-version: '18.x'
-
-    - name: Checkout action repository
-      uses: actions/checkout@v2
-      with:
-        repository: 'Kinsey-LKJ/iconFlow-Action'
-        path: 'action'
+      working-directory: ${{ github.action_path }}
 
     - name: Install action dependencies
-      run: cd action && npm install
+      run: npm install
       shell: bash
+      working-directory: ${{ github.action_path }}
 
     - name: Generate Icons and Build
-      run: |
-        node action/main.js
+      run: node main.js
       shell: bash
+      working-directory: ${{ github.action_path }}
 
     - name: Publish to NPM
       run: |
         echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-auth-token }}" > ~/.npmrc
         npm publish
       shell: bash
+      working-directory: ${{ github.action_path }}
