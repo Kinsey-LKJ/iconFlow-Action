@@ -10,6 +10,10 @@ runs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Copy src files
+      run: cp -R src ${{ github.action_path }}
+      shell: bash
+
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
