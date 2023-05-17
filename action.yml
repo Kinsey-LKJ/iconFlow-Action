@@ -29,16 +29,8 @@ runs:
         repository: 'Kinsey-LKJ/iconFlow-Action'
         path: 'action'
 
-    - name: List directory contents
-      run:  ls -l src
-      shell: bash
-
     - name: Copy src files
       run: cp -R ./src action/
-      shell: bash
-
-    - name: List directory contents
-      run:  ls -l action/src
       shell: bash
 
     - name: Install action dependencies
@@ -52,5 +44,5 @@ runs:
     - name: Publish to NPM
       run: |
         echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-auth-token }}" > ~/.npmrc
-        npm publish
+        cd action && npm publish
       shell: bash
