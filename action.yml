@@ -21,8 +21,7 @@ runs:
 
     - name: Generate Icons and Build
       run: |
-        npm run generate
-        npm run build:bundle
+        node main.js
       shell: bash
 
     - name: Publish to NPM
