@@ -7,19 +7,22 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout action repository
+    - name: Checkout repository
       uses: actions/checkout@v2
-      with:
-        repository: 'Kinsey-LKJ/iconFlow-Action'
-        path: 'action'
 
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '18.x'
 
-    - name: Install dependencies
-      run: npm install
+    - name: Checkout action repository
+      uses: actions/checkout@v2
+      with:
+        repository: 'Kinsey-LKJ/iconFlow-Action'
+        path: 'action'
+
+    - name: Install action dependencies
+      run: cd action && npm install
       shell: bash
 
     - name: Generate Icons and Build
