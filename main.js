@@ -11,6 +11,9 @@ fs.copySync(
   path.join(actionRepoPath, 'src')
 );
 
+console.log(userRepoPath)
+console.log(actionRepoPath)
+
 exec(
   `cd ${actionRepoPath} && npm run generate && npm run build:bundle`,
   (error, stdout, stderr) => {
