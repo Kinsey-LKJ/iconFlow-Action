@@ -61,7 +61,9 @@ runs:
         cd action && npm publish
       shell: bash
 
-    - run: npm run build
+    - name: Build Github Pages
+      run: npm run build
+      shell: bash
 
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
