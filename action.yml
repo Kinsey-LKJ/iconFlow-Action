@@ -62,12 +62,12 @@ runs:
       shell: bash
 
     - name: Build Github Pages
-      run: npm run build
+      run: cd action && npm run build
       shell: bash
 
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
-        with:
-          build_dir: docs
-          env:
-            GITHUB_TOKEN: ${{ inputs.github-token }}
+      with:
+        build_dir: docs
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
