@@ -68,6 +68,6 @@ runs:
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
-        build_dir: docs
+        build_dir: ./action/docs
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
