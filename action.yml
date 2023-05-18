@@ -4,6 +4,12 @@ inputs:
   npm-auth-token:
     description: 'NPM auth token'
     required: true
+  figma-token:
+    description: 'Figma token'
+    required: true
+  figma-file-url:
+    description: 'Figma file url'
+    required: true
 runs:
   using: 'composite'
   steps:
