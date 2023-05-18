@@ -69,5 +69,5 @@ runs:
       uses: crazy-max/ghaction-github-pages@v1.2.5
         with:
           build_dir: docs
-        env:
-          GITHUB_TOKEN: ${{ inputs.github-token }}
+          env:
+            GITHUB_TOKEN: ${{ inputs.github-token }}
