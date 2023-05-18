@@ -10,6 +10,10 @@ inputs:
   figma-file-url:
     description: 'Figma file url'
     required: true
+  github-token:
+    description: 'Github Token'
+    required: true
+
 runs:
   using: 'composite'
   steps:
@@ -62,6 +66,6 @@ runs:
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
         with:
-          build_dir: ./action/docs
+          build_dir: docs
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ inputs.github-token }}
