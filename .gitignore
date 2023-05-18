@@ -5,4 +5,5 @@ node_modules
 dist
 docs
 yarn-error.log
+package-lock.json
 .DS_Store
