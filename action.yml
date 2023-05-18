@@ -56,3 +56,12 @@ runs:
         echo "//registry.npmjs.org/:_authToken=${{ inputs.npm-auth-token }}" > ~/.npmrc
         cd action && npm publish
       shell: bash
+
+    - run: npm run build
+
+    - name: GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v1.2.5
+        with:
+          build_dir: ./action/docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
