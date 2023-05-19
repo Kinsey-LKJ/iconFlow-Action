@@ -38,6 +38,10 @@ runs:
       with:
         repository: 'Kinsey-LKJ/iconFlow-Action'
         path: 'action'
+    
+    - name: Remove .git directory in action
+      run: rm -rf action/.git
+      shell: bash
 
     - name: Copy src files
       run: cp -R ./src action/
@@ -74,11 +78,9 @@ runs:
 
     - name: Commit and push changes
       run: |
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "${{GITHUB_ACTOR}}"
+          git config --global user.email "${{GITHUB_ACTOR}}@users.noreply.github.com"
           git add -A
           git commit -m "Update from action"
           git push
-      env:
-          GH_TOKEN: ${{ inputs.github-token }}
       shell: bash
