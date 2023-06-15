@@ -30,15 +30,15 @@ runs:
       with:
         args: 'format=svg outputDir=./src/'
       env:
-          FIGMA_FILE_URL: ${{ inputs.figma-file-url }}
-          FIGMA_TOKEN: ${{ inputs.figma-token }}
+        FIGMA_FILE_URL: ${{ inputs.figma-file-url }}
+        FIGMA_TOKEN: ${{ inputs.figma-token }}
 
     - name: Checkout action repository
       uses: actions/checkout@v2
       with:
         repository: 'Kinsey-LKJ/iconFlow-Action'
         path: 'action'
-    
+
     - name: Remove .git directory in action
       run: rm -rf action/.git
       shell: bash
@@ -78,11 +78,11 @@ runs:
 
     - name: Commit and push changes
       run: |
-          git config --global user.name "${{github.actor}}"
-          git config --global user.email "${{github.actor}}@users.noreply.github.com"
-          git add -A
-          git commit -m "Update from action"
-          git config --list
-          git remote -v
-          git push https://${{ github.actor }}:${{inputs.github-token}}@github.com/${{ github.repository }}
+        git config --global user.name "${{github.actor}}"
+        git config --global user.email "${{github.actor}}@users.noreply.github.com"
+        git add -A
+        git commit -m "Update from action"
+        git remote set-url origin https://github.com/${{ github.repository }}.git
+        git remote -v
+        git push https://${{ github.actor }}:${{inputs.github-token}}@github.com/${{ github.repository }}
       shell: bash
