@@ -92,6 +92,8 @@ runs:
 
     - name: Commit and push changes
       run: |
+        git config --global user.name "Kinsey-LKJ"
+        git config --global user.email "kinsey@lkj.design"
         git add -A
         git commit -m "Update from action"
         git push "https://${{inputs.github-token}}@github.com/${{ github.repository }}.git" ${{ steps.processed_branch_name.outputs.processed_branch }}
