@@ -79,13 +79,16 @@ runs:
     - name: 获取分支名称
       id: branch_name
       run: echo "::set-output name=branch::${{ github.ref }}"
+      shell: bash
 
     - name: 处理分支名称
       id: processed_branch_name
       run: echo "::set-output name=processed_branch::$(basename ${{ steps.branch_name.outputs.branch }})"
+      shell: bash
 
     - name: 显示分支名称
       run: echo "当前分支是 ${{ steps.processed_branch_name.outputs.processed_branch }}"
+      shell: bash
 
     - name: Commit and push changes
       run: |
