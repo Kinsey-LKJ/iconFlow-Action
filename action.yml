@@ -96,5 +96,5 @@ runs:
         git config --global user.email "${{github.actor}}@users.noreply.github.com"
         git add -A
         git commit -m "Update from action"
-        git push ${{inputs.github-token}}github.com/${{ github.repository }}.git ${{ steps.processed_branch_name.outputs.processed_branch }}
+        git push "https://${{inputs.github-token}}@github.com/${{ github.repository }}.git ${{ steps.processed_branch_name.outputs.processed_branch }}"
       shell: bash
