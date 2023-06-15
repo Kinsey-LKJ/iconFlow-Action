@@ -83,6 +83,6 @@ runs:
           git add -A
           git commit -m "Update from action"
           git config --list
-          GIT_TRACE=1 git push https://${{ github.actor }}:${{inputs.github-token}}@github.com/${{ github.repository }}
+          git remote -v
           git push https://${{ github.actor }}:${{inputs.github-token}}@github.com/${{ github.repository }}
       shell: bash
