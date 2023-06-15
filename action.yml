@@ -76,11 +76,22 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
 
-    # - name: Commit and push changes
-    #   run: |
-    #     git config --global user.name "${{github.actor}}"
-    #     git config --global user.email "${{github.actor}}@users.noreply.github.com"
-    #     git add -A
-    #     git commit -m "Update from action"
-    #     git push https://${{ github.actor }}:${{inputs.github-token}}@github.com/${{ github.repository }}
-    #   shell: bash
+    - name: 获取分支名称
+      id: branch_name
+      run: echo "::set-output name=branch::${{ github.ref }}"
+
+    - name: 处理分支名称
+      id: processed_branch_name
+      run: echo "::set-output name=processed_branch::$(basename ${{ steps.branch_name.outputs.branch }})"
+
+    - name: 显示分支名称
+      run: echo "当前分支是 ${{ steps.processed_branch_name.outputs.processed_branch }}"
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "${{github.actor}}"
+        git config --global user.email "${{github.actor}}@users.noreply.github.com"
+        git add -A
+        git commit -m "Update from action"
+        git push ${{inputs.github-token}}github.com/${{ github.repository }}.git ${{ steps.processed_branch_name.outputs.processed_branch }}
+      shell: bash
